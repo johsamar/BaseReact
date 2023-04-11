@@ -3,13 +3,15 @@ import React, { useEffect, useState } from "react";
 
 const Eider = () => {
   const [colorName, setColorName] = useState("green");
+  const [sorryColor, setSorryColor] = useState("blue");
+
   const [message, setMessage] = useState("Hola a todos");
   const [messageButtonSorry, setMessageButtonSorrry] = useState(
     "Pedir Disculpas a Dalia"
   );
-  const [sorryColor, setSorryColor] = useState("blue");
 
-  const [change, setChangeMessage] = useState(false);
+  const [changeM, setChangeMessage] = useState(false);
+  const [changeC, setChangeColor] = useState(false);
   const [counter, setCounter] = useState(-1);
 
   useEffect(() => {
@@ -34,31 +36,31 @@ const Eider = () => {
       colorName: "white",
       padding: "10px",
       margin: "5px",
-      borderRadius: "2%"
+      borderRadius: "2%",
     },
   };
 
   const changeColor = () => {
-    if (change) {
-      setColorName("yellow");
-      setSorryColor("green");
-      setChangeMessage(false);
-    } else {
+    if (changeC) {
       setColorName("blue");
       setSorryColor("yellow");
-      setChangeMessage(true);
+      setChangeColor(false);
+    } else {
+      setColorName("yellow");
+      setSorryColor("green");
+      setChangeColor(true);
     }
   };
 
   const changeMessage = () => {
-    if (!change) {
-      setMessage("Disculpa por dañar tu trabajo Dalia");
-      setMessageButtonSorrry("Dar gracias");
-      setChangeMessage(true);
-    } else {
+    if (changeM) {
       setMessage("Gracias!");
       setMessageButtonSorrry("Pedir Disculpas a Dalia");
       setChangeMessage(false);
+    } else {
+      setMessage("Disculpa por dañar tu trabajo Dalia");
+      setMessageButtonSorrry("Dar gracias");
+      setChangeMessage(true);
     }
   };
 
@@ -67,8 +69,12 @@ const Eider = () => {
       <h1 style={styles.name}>Eider</h1>
       <h1 style={styles.sorry}>{message}</h1>
       <h2>Veces oprimido: {counter}</h2>
-      <button style={styles.buttons} onClick={() => changeColor()}>Cambiar Color</button>
-      <button style={styles.buttons} onClick={() => changeMessage()}>{messageButtonSorry}</button>
+      <button style={styles.buttons} onClick={() => changeColor()}>
+        Cambiar Color
+      </button>
+      <button style={styles.buttons} onClick={() => changeMessage()}>
+        {messageButtonSorry}
+      </button>
     </>
   );
 };
