@@ -1,11 +1,10 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const Dalia = () => {
 
     const [color, setColor] = useState("yellow");
     const [change, setChange] = useState(true);
     const [contador, setContador] = useState(0);
-    const [cambio, setCambio] = useState(false);
 
     useEffect(() => {
         setContador(contador + 1);
@@ -22,7 +21,7 @@ const Dalia = () => {
             setChange(false);
         } else {
             setColor("blue");
-            setCambio(true);
+            setChange(true);
         }
     }
 
