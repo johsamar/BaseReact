@@ -55,10 +55,10 @@ const Eider = () => {
   const changeMessage = () => {
     if (changeM) {
       setMessage("Gracias!");
-      setMessageButtonSorrry("Pedir Disculpas a Dalia");
+      setMessageButtonSorrry("Pedir Disculpas a Dalis");  
       setChangeMessage(false);
     } else {
-      setMessage("Disculpa por dañar tu trabajo Dalia");
+      setMessage("Disculpa por dañar tu trabajo Dalia 🏳🏳✌😢🤣");
       setMessageButtonSorrry("Dar gracias");
       setChangeMessage(true);
     }
