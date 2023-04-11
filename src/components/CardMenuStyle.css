@@ -1,0 +1,28 @@
+
+.card-base {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-column {
+    flex-direction: column;
+    display: flex;
+}
+
+.card-row {
+    flex-direction: row;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.image-card {
+    width: 100%;    
+}
