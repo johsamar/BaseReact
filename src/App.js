@@ -1,6 +1,7 @@
 import Samuel from "./components/samuel";
 import Cristian from "./components/Cristian";
 import AlejandroA from "./components/AlejandroA";
+import Giovanny from "./components/Giovanny";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Samuel />
       <Cristian />
       <AlejandroA />
+      <Giovanny />
     </div>
   );
 }
