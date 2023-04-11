@@ -55,7 +55,7 @@ const Eider = () => {
   const changeMessage = () => {
     if (changeM) {
       setMessage("Gracias!");
-      setMessageButtonSorrry("Pedir Disculpas a Dalis");  
+      setMessageButtonSorrry("Pedir Disculpas a Dalia");  
       setChangeMessage(false);
     } else {
       setMessage("Disculpa por dañar tu trabajo Dalia 🏳🏳✌😢🤣");
