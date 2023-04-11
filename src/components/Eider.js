@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 const Eider = () => {
   const [colorName, setColorName] = useState("green");
-  const [sorryColor, setSorryColor] = useState("blue");
+  const [sorryColor, setSorryColor] = useState("green");
 
   const [message, setMessage] = useState("Hola a todos");
   const [messageButtonSorry, setMessageButtonSorrry] = useState(

@@ -3,7 +3,7 @@ import React, { useState,useEffect } from "react";
 const Dalia = () => {
 
     const [color, setColor] = useState("yellow");
-    const [change, setChange] = useState(true);
+    const [change, setChange] = useState(false);
     const [contador, setContador] = useState(0);
 
     useEffect(() => {
