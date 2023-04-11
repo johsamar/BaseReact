@@ -1,6 +1,7 @@
 import Samuel from "./components/samuel";
 import Cristian from "./components/Cristian";
 import AlejandroA from "./components/AlejandroA";
+import MiguelRamos from "./components/miguelRamos";
 import Giovanny from "./components/Giovanny";
 import JuanVela from "./components/JuanVela";
 import Eider from "./components/Eider";
@@ -13,6 +14,7 @@ function App() {
       <Samuel />
       <Cristian />
       <AlejandroA />
+      <MiguelRamos />
       <Giovanny />
       <JuanVela />
       <Dalia/>
