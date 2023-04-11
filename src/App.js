@@ -10,6 +10,7 @@ function App() {
       <Cristian />
       <AlejandroA />
       <Giovanny />
+      <Dalia/>
     </div>
   );
 }
