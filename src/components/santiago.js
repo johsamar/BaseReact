@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react-hooks/exhaustive-deps 
 import React, { useEffect, useState } from "react";
 
 const Samuel = () => {
@@ -40,4 +40,19 @@ const Samuel = () => {
     );
 };
 
-export default Samuel;
+export default Samuel;*/
+
+import React from 'react';
+export default class Santiago extends React.Component{
+
+    render()
+    {
+        return (
+            <div>
+                <h1>Santiago</h1>
+                <p>SEMILLERO FULLSTACK</p>
+            </div>
+        )
+    }
+}
+
