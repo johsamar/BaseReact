@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 const Dalia = () => {
 
     const [color, setColor] = useState("yellow");
     const [change, setChange] = useState(true);
     const [contador, setContador] = useState(0);
+    const [cambio, setCambio] = useState(false);
 
     useEffect(() => {
         setContador(contador + 1);
@@ -27,7 +28,7 @@ const Dalia = () => {
 
     return (
         <>
-            <h1 style={estilo}>Dalia</h1>
+            <h1 style={styles}>Dalia</h1>
             <h2>
                 Veces oprimido: {contador}
             </h2>
