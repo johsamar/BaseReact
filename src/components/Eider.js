@@ -4,18 +4,19 @@ import React, { useEffect, useState } from "react";
 const Eider = () => {
   const [colorName, setColorName] = useState("green");
   const [message, setMessage] = useState("Hola a todos");
-  const [messageButtonSorry, setMessageButtonSorrry] = useState("Pedir Disculpas a Dalia");
-
-  const [change, setChangeMessage] = useState(false);
+  const [messageButtonSorry, setMessageButtonSorrry] = useState(
+    "Pedir Disculpas a Dalia"
+  );
   const [sorryColor, setSorryColor] = useState("blue");
 
-  const [contador, setContador] = useState(0);
+  const [change, setChangeMessage] = useState(false);
+  const [counter, setCounter] = useState(-1);
 
   useEffect(() => {
-    setContador(contador + 1);
+    setCounter(counter + 1);
   }, [colorName]);
 
-  const estilo = {
+  const styles = {
     name: {
       backgroundColor: colorName,
       colorName: "white",
@@ -27,9 +28,17 @@ const Eider = () => {
       colorName: "white",
       padding: "10px",
     },
+
+    buttons: {
+      backgroundColor: "gray",
+      colorName: "white",
+      padding: "10px",
+      margin: "5px",
+      borderRadius: "2%"
+    },
   };
 
-  const cambiarColor = () => {
+  const changeColor = () => {
     if (change) {
       setColorName("yellow");
       setSorryColor("green");
@@ -39,27 +48,27 @@ const Eider = () => {
       setSorryColor("yellow");
       setChangeMessage(true);
     }
-};
+  };
 
-const changeMessage = () => {
+  const changeMessage = () => {
     if (!change) {
-        setMessage("Disculpa por dañar tu trabajo Dalia");
-        setMessageButtonSorrry("Dar gracias");
-        setChangeMessage(true);
+      setMessage("Disculpa por dañar tu trabajo Dalia");
+      setMessageButtonSorrry("Dar gracias");
+      setChangeMessage(true);
     } else {
-        setMessage("Gracias!");
-        setMessageButtonSorrry("Pedir Disculpas a Dalia");
-        setChangeMessage(false);
+      setMessage("Gracias!");
+      setMessageButtonSorrry("Pedir Disculpas a Dalia");
+      setChangeMessage(false);
     }
   };
 
   return (
     <>
-      <h1 style={estilo.name}>Eider</h1>
-      <h1 style={estilo.sorry}>{message}</h1>
-      <h2>Veces oprimido: {contador}</h2>
-      <button onClick={() => cambiarColor()}>Cambiar Color</button>
-      <button onClick={() => changeMessage()}>{messageButtonSorry}</button>
+      <h1 style={styles.name}>Eider</h1>
+      <h1 style={styles.sorry}>{message}</h1>
+      <h2>Veces oprimido: {counter}</h2>
+      <button style={styles.buttons} onClick={() => changeColor()}>Cambiar Color</button>
+      <button style={styles.buttons} onClick={() => changeMessage()}>{messageButtonSorry}</button>
     </>
   );
 };
