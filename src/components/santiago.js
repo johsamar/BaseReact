@@ -1,33 +1,37 @@
-import React, { useState,useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 
-const Dalia = () => {
+const Santiago = () => {
 
     const [color, setColor] = useState("yellow");
-    const [change, setChange] = useState(false);
+    const [cambio, setCambio] = useState(false);
+
     const [contador, setContador] = useState(0);
 
     useEffect(() => {
         setContador(contador + 1);
     }, [color]);
 
-    const styles = {
-        background: "black",
-        color: color,
-        padding: "10px, 5px, 10px, 5px",
-      };
-      const cambiarColor = () => {
-        if (change) {
+
+    const estilo = {
+        backgroundColor: color,
+        color: "white",
+        padding: "10px",
+    }
+
+    const cambiarColor = () => {
+        if (cambio) {
             setColor("yellow");
-            setChange(false);
+            setCambio(false);
         } else {
             setColor("blue");
-            setChange(true);
+            setCambio(true);
         }
     }
 
     return (
         <>
-            <h1 style={styles}>Dalia</h1>
+            <h1 style={estilo}>Santiago</h1>
             <h2>
                 Veces oprimido: {contador}
             </h2>
@@ -36,4 +40,5 @@ const Dalia = () => {
     );
 };
 
-export default Dalia;
+export default Santiago;
+
