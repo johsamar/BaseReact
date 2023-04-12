@@ -1,4 +1,5 @@
 import CartaPage from "./pages/carta-page";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
