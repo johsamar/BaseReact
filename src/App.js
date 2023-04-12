@@ -8,7 +8,7 @@ import JuanVela from "./components/JuanVela";
 import Eider from "./components/Eider";
 import { Hector } from "./components/Hector";
 import Dalia from "./components/Dalia";
-
+import Santiago from "./components/Santiago";
 function App() {
   return (
     <div className="App">
@@ -23,6 +23,7 @@ function App() {
       <Dalia/>
       <Eider/>
       <Hector/>
+      <Santiago/>
     </div>
   );
 }

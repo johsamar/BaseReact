@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 
-const Samuel = () => {
+const Santiago = () => {
 
     const [color, setColor] = useState("yellow");
     const [cambio, setCambio] = useState(false);
@@ -31,7 +31,7 @@ const Samuel = () => {
 
     return (
         <>
-            <h1 style={estilo}>Samuel</h1>
+            <h1 style={estilo}>Santiago</h1>
             <h2>
                 Veces oprimido: {contador}
             </h2>
@@ -40,4 +40,5 @@ const Samuel = () => {
     );
 };
 
-export default Samuel;
+export default Santiago;
+
