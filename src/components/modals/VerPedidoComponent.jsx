@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { findPlatilloById } from "../../services/Platillos";
 
 const VerPedidoComponent = ({ pedidos }) => {
+  console.log("Re-renderizado");
+
+  const [Total, setTotal] = useState(0);
+
+  const totalHandle = (total) => {
+    setTotal(total);
+  };
+
+  useEffect(() => {
+    let total = 0;
+    pedidos.forEach((pedido) => {
+      const platilloFind = findPlatilloById(pedido.platillo);
+      total += platilloFind.precio * pedido.cantidad;
+    });
+    //Acá es donde se renderiza una vez más
+    totalHandle(total);
+  }, [pedidos]);
+
   return (
     <>
       <button
@@ -61,6 +79,11 @@ const VerPedidoComponent = ({ pedidos }) => {
                     </tbody>
                   </table>
                 </div>
+              </div>
+            </div>
+            <div className="row justify-content-end">
+              <div className="col">
+                <h3>Total : {Total}</h3>
               </div>
             </div>
             <div className="modal-footer">
