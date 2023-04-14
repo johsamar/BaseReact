@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import NavBarComponent from "../components/NavBarComponent";
 import FooterComponent from "../components/FooterComponent";
-import CardMenuComponent from "../components/CardMenuComponent";
-import { getPlatillos } from "../services/Platillos";
+// import CardMenuComponent from "../components/CardMenuComponent";
 import "./HomeStyle.css";
+import { getPlatillos } from "../services/Platillos";
+import CardBoot from "../components/CardBoot";
 
 const HomePage = () => {
   const [data, setData] = useState(null);
@@ -24,7 +25,8 @@ const HomePage = () => {
           data.map((platillo) => {
             return (
               <div className="grid-item">
-                <CardMenuComponent platillo={platillo} />
+                {/* <CardMenuComponent platillo={platillo} /> */}
+                <CardBoot/>
               </div>
             );
           })
