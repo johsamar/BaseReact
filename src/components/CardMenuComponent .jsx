@@ -3,7 +3,7 @@ import React from "react";
 import { ImageComponent } from "./ImageComponent";
 import { CantidadComponent } from "./modals/CantidadComponent";
 
-const CardMenuComponent = ({ platillo, pedidos, setPedidos }) => {
+const CardMenuComponent = ({ platillo }) => {
   const { id, nombre, precio, descripcion, imagen, puntuacion } = platillo;
   return (
     <div className="card" style={{ width: "18rem" }}>
@@ -53,13 +53,7 @@ const CardMenuComponent = ({ platillo, pedidos, setPedidos }) => {
           </div>
           <div className="col-auto">
             {/* <button className="btn btn-primary">Agregar</button> */}
-            <CantidadComponent
-              id={id}
-              nombre={nombre}
-              valor={precio}
-              pedidos={pedidos}
-              setPedidos={setPedidos}
-            />
+            <CantidadComponent id={id} nombre={nombre} valor={precio} />
           </div>
         </div>
       </div>
