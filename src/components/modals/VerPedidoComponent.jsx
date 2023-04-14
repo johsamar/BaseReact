@@ -1,8 +1,9 @@
 import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { findPlatilloById } from "../../services/Platillos";
+import { PedidosContext } from "../../contexts/PedidosContext";
 
-const VerPedidoComponent = ({ pedidos }) => {
+const VerPedidoComponent = () => {
   return (
     <>
       <button
@@ -35,33 +36,52 @@ const VerPedidoComponent = ({ pedidos }) => {
               ></button>
             </div>
             <div className="modal-body">
-              <div className="row">
-                <div className="col">
-                  <table className="table table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">Platillo</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Valor</th>
-                        <th scope="col">Total</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {pedidos.map((pedido) => {
-                        const platilloFind = findPlatilloById(pedido.platillo);
-                        return (
-                          <tr>
-                            <td>{platilloFind.nombre}</td>
-                            <td>{pedido.cantidad}</td>
-                            <td>{platilloFind.precio}</td>
-                            <td>{platilloFind.precio * pedido.cantidad}</td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+              <PedidosContext.Consumer>
+                {({ pedidos, total }) => {
+                  return (
+                    <>
+                      <div className="row">
+                        <div className="col">
+                          <table className="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col">Platillo</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Total</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {pedidos.map((pedido) => {
+                                const platilloFind = findPlatilloById(
+                                  pedido.platillo
+                                );
+                                return (
+                                  <tr>
+                                    <td>{platilloFind.nombre}</td>
+                                    <td>{pedido.cantidad}</td>
+                                    <td>{platilloFind.precio}</td>
+                                    <td>
+                                      {platilloFind.precio * pedido.cantidad}
+                                    </td>
+                                  </tr>
+                                );
+                              })}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div className="row justify-content-end">
+                        <div className="col-auto">
+                          <h3>
+                            <strong>Total:</strong> $ {total}
+                          </h3>
+                        </div>
+                      </div>
+                    </>
+                  );
+                }}
+              </PedidosContext.Consumer>
             </div>
             <div className="modal-footer">
               <button

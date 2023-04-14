@@ -1,32 +1,65 @@
-import React, { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect, useState } from "react";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { FiMinus, FiPlus } from "react-icons/fi";
+import { PedidosContext } from "../../contexts/PedidosContext";
 
-const CantidadComponent = ({ id, nombre, valor, pedidos, setPedidos }) => {
-  const [cantidad, setCantidad] = useState(1);
+const CantidadComponent = ({ id, nombre, valor }) => {
+  const [cantidad, setCantidad] = useState(0);
+  const { pedidos, setPedidos } = useContext(PedidosContext);
+  const [total, setTotal] = useState(0);
+  const [yaAgregado, setYaAgregado] = useState(false);
+
+  useEffect(() => {
+    handleValores();
+  }, [pedidos]);
+
+  const handleValores = () => {
+    const pedidoFind = pedidos.find((pedido) => pedido.platillo === id);
+    if (pedidoFind) {
+      setYaAgregado(true);
+      setCantidad(pedidoFind.cantidad);
+      setTotal(pedidoFind.total);
+    }
+  };
 
   const handleAgregar = () => {
-    setCantidad(cantidad + 1);
+    const nuevaCantidad = cantidad + 1;
+    setCantidad(nuevaCantidad);
+    setTotal(nuevaCantidad * valor);
   };
+
   const handleRestar = () => {
     if (cantidad > 1) {
-      setCantidad(cantidad - 1);
+      const nuevaCantidad = cantidad - 1;
+      setCantidad(nuevaCantidad);
+      setTotal(nuevaCantidad * valor);
     }
   };
 
   const reset = () => {
-    setCantidad(1);
+    // setCantidad(1);
+    // setTotal(valor);
+    handleValores();
   };
 
   const aceptar = (id) => {
-    const copyPedidos = [...pedidos];
-
-    copyPedidos.push({
-      platillo: id,
-      cantidad: cantidad,
-    });
-
-    setPedidos(copyPedidos);
+    if (cantidad > 0) {
+      const copyPedidos = [...pedidos];
+      
+      if (yaAgregado) {
+        const index = copyPedidos.findIndex((pedido) => pedido.platillo === id);
+        copyPedidos[index].cantidad = cantidad;
+        copyPedidos[index].total = total;
+      } else {
+        copyPedidos.push({
+          platillo: id,
+          cantidad: cantidad,
+          total: total,
+        });
+      }
+      setPedidos(copyPedidos);
+    }
   };
   return (
     <>
@@ -78,7 +111,7 @@ const CantidadComponent = ({ id, nombre, valor, pedidos, setPedidos }) => {
               <div className="row justify-content-center">
                 <div className="col-auto">
                   <h3>
-                    <strong>Total</strong> $ {valor * cantidad}
+                    <strong>Total</strong> $ {total}
                   </h3>
                 </div>
               </div>
