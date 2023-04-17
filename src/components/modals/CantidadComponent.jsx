@@ -12,15 +12,23 @@ const CantidadComponent = ({ id, nombre, valor }) => {
 
   useEffect(() => {
     handleValores();
+    handleDelete();
   }, [pedidos]);
 
   const handleValores = () => {
+    console.log("pedidos desde handlerValores → ", pedidos);
+    /*Acá nunca va a encontrar nada ya que se eliminó de la lista de pedidios
+    Por eso no va a editar la cantidad ni el total*/
     const pedidoFind = pedidos.find((pedido) => pedido.platillo === id);
     if (pedidoFind) {
       setYaAgregado(true);
       setCantidad(pedidoFind.cantidad);
       setTotal(pedidoFind.total);
     }
+  };
+
+  const handleDelete = () => {
+    console.log("handleDelete");
   };
 
   const handleAgregar = () => {
@@ -46,7 +54,7 @@ const CantidadComponent = ({ id, nombre, valor }) => {
   const aceptar = (id) => {
     if (cantidad > 0) {
       const copyPedidos = [...pedidos];
-      
+
       if (yaAgregado) {
         const index = copyPedidos.findIndex((pedido) => pedido.platillo === id);
         copyPedidos[index].cantidad = cantidad;

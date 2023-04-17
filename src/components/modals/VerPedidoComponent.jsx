@@ -1,26 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { findPlatilloById } from "../../services/Platillos";
 import { PedidosContext } from "../../contexts/PedidosContext";
+import { BsFillTrashFill } from "react-icons/bs";
 
-const VerPedidoComponent = ({ pedidos }) => {
-  console.log("Re-renderizado");
 
-  const [Total, setTotal] = useState(0);
+const VerPedidoComponent = () => {
+  const { pedidos, total, setPedidos } = useContext(PedidosContext);
 
-  const totalHandle = (total) => {
-    setTotal(total);
-  };
-
-  useEffect(() => {
-    let total = 0;
-    pedidos.forEach((pedido) => {
-      const platilloFind = findPlatilloById(pedido.platillo);
-      total += platilloFind.precio * pedido.cantidad;
-    });
-    //Acá es donde se renderiza una vez más
-    totalHandle(total);
-  }, [pedidos]);
+  const eliminarPedido = (id)=>{
+    console.log(id)
+    const copyPedidos = pedidos.filter(pedido => pedido.platillo !== id)
+    setPedidos(copyPedidos);
+  }
 
   return (
     <>
@@ -54,9 +46,9 @@ const VerPedidoComponent = ({ pedidos }) => {
               ></button>
             </div>
             <div className="modal-body">
-              <PedidosContext.Consumer>
-                {({ pedidos, total }) => {
-                  return (
+              {/* <PedidosContext.Consumer> */}
+                {/* {({ pedidos, total }) => { */}
+                  {/* return ( */}
                     <>
                       <div className="row">
                         <div className="col">
@@ -67,6 +59,7 @@ const VerPedidoComponent = ({ pedidos }) => {
                                 <th scope="col">Cantidad</th>
                                 <th scope="col">Valor</th>
                                 <th scope="col">Total</th>
+                                <th>Acciones</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -81,6 +74,11 @@ const VerPedidoComponent = ({ pedidos }) => {
                                     <td>{platilloFind.precio}</td>
                                     <td>
                                       {platilloFind.precio * pedido.cantidad}
+                                    </td>
+                                    <td>
+                                      <button className="btn btn-danger" onClick={() => eliminarPedido(platilloFind.id)}>
+                                        <BsFillTrashFill />
+                                      </button>
                                     </td>
                                   </tr>
                                 );
@@ -97,14 +95,9 @@ const VerPedidoComponent = ({ pedidos }) => {
                         </div>
                       </div>
                     </>
-                  );
-                }}
-              </PedidosContext.Consumer>
-            </div>
-            <div className="row justify-content-end">
-              <div className="col">
-                <h3>Total : {Total}</h3>
-              </div>
+                  {/* ); */}
+                 {/* }} */}
+              {/* </PedidosContext.Consumer> */}
             </div>
             <div className="modal-footer">
               <button
