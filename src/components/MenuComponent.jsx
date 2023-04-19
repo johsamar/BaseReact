@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getPlatillos } from "../services/Platillos";
 import CardMenuComponent from "./CardMenuComponent ";
 import { VerPedidoComponent } from "./modals/VerPedidoComponent";

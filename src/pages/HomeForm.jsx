@@ -1,4 +1,3 @@
-import React from "react";
 import { PlatilloFormComponent } from "../components/PlatilloFormComponent";
 
 const HomeForm = () => {

@@ -1,5 +1,3 @@
-import React from "react";
-
 const ImageComponent = ({ src, alt }) => {
   //Convertir su forma a cuadrada
   const style = {};

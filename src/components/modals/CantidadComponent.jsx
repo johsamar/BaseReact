@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { PedidosContext } from "../../contexts/PedidosContext";
