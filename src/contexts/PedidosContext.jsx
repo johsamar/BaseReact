@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
-const PedidosContext = React.createContext();
+const PedidosContext = createContext();
 
-function PedidosProvider({ children }) {
+const PedidosProvider = ({ children }) => {
   const [pedidos, setPedidos] = useState([]);
   const [total, setTotal] = useState(0);
 

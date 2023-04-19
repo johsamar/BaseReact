@@ -24,7 +24,12 @@ const CantidadComponent = ({ id, nombre, valor }) => {
       setYaAgregado(true);
       setCantidad(pedidoFind.cantidad);
       setTotal(pedidoFind.total);
+      return;
     }
+
+    setYaAgregado(false);
+    setCantidad(0);
+    setTotal(0);
   };
 
   const handleDelete = () => {
