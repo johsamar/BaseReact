@@ -30,7 +30,7 @@ const PlatilloFormComponent = () => {
       <div className="row mt-2">
         <div className="col">
           <div className="form-group">
-            <label for="nombre">Nombre</label>
+            <label htmlFor="nombre">Nombre</label>
             <input
               type="text"
               className="form-control"
@@ -53,7 +53,7 @@ const PlatilloFormComponent = () => {
       <div className="row mt-2">
         <div className="col">
           <div className="form-group">
-            <label for="descripcion">Descripción</label>
+            <label htmlFor="descripcion">Descripción</label>
             <textarea
               className="form-control"
               id="descripcion"
@@ -66,7 +66,7 @@ const PlatilloFormComponent = () => {
       <div className="row mt-2">
         <div className="col">
           <div className="form-group">
-            <label for="precio">Precio</label>
+            <label htmlFor="precio">Precio</label>
             <input
               type="number"
               className="form-control"
@@ -81,7 +81,7 @@ const PlatilloFormComponent = () => {
         </div>
         <div className="col">
           <div className="form-group">
-            <label for="cantidad">Cantidad</label>
+            <label htmlFor="cantidad">Cantidad</label>
             <input
               type="number"
               className="form-control"

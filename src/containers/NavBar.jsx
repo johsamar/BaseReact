@@ -1,13 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <Link to='/' className="navbar-brand">
           REST-aurate Coder
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -32,7 +33,9 @@ const NavBar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link ">Carta</a>
+              <Link to={`carta`} className="nav-link ">
+                Carta
+              </Link>
             </li>
           </ul>
           <form className="d-flex" role="search">
