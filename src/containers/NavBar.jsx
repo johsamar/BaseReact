@@ -1,13 +1,16 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-labels */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          REST-aurate Coder
-        </a>
+        <Link to="/" className="navbar-brand">
+          REST-aurante
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -22,17 +25,37 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <NavLink
+                to="/populares"
+                className="nav-link"
+                style={({ isActive }) => {
+                  return { color: isActive ? "blue" : "gray" };
+                }}
+              >
                 Populares
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <NavLink
+                to="/especialidades"
+                className="nav-link"
+                style={({ isActive }) => {
+                  return { color: isActive ? "blue" : "gray" };
+                }}
+              >
                 Especialidades
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link ">Carta</a>
+              <NavLink
+                to="/carta"
+                className="nav-link"
+                style={({ isActive }) => {
+                  return { color: isActive ? "blue" : "gray" };
+                }}
+              >
+                Carta
+              </NavLink>
             </li>
           </ul>
           <form className="d-flex" role="search">
