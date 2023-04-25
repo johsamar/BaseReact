@@ -30,7 +30,7 @@ const LoginForm = () => {
         className="container w-50 mt-3 mb-3 text-light"
       >
         <div className="text-center">
-          <h3>Registrar Usuario</h3>
+          <h3>Iniciar Sesión</h3>
         </div>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
