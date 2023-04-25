@@ -7,6 +7,8 @@ import { Carta } from "./pages/Carta";
 import { Especialidades } from "./pages/Especialidades";
 import { Licores } from "./components/carta_components/Licores";
 import { Comidas } from "./components/carta_components/Comidas";
+import { LoginComponent } from "./components/LoginComponent";
+import { AuthLogin, AuthProvider, ProtectedRoute } from "./contexts/AuthContext";
 
 // import { HomeForm } from "./pages/HomeForm";
 
@@ -14,22 +16,33 @@ function App() {
   return (
     <>
       <Router>
-        <NavBar />
-
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/homeform" element={<HomeForm />} />
-          <Route path="/populares" element={<Populares />} />
-          <Route path="/especialidades" element={<Especialidades />} />
-          <Route path="/carta" element={<Carta />}>
-            <Route path="licores" element={<Licores />} />
-            <Route path="comidas" element={<Comidas />} />
-          </Route>
-          {/* <Route path="/carta/:tipo" element={<Carta />} /> */}
-          <Route path="*" element={<h1>Not Found 404</h1>} />
-        </Routes>
-
+        <AuthProvider>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            } />
+            <Route path="/login" element={
+              <AuthLogin>
+                <LoginComponent />
+              </AuthLogin>} />
+            <Route path="/homeform"
+              element={
+                <ProtectedRoute>
+                  <HomeForm />
+                </ProtectedRoute>} />
+            <Route path="/populares" element={<Populares />} />
+            <Route path="/especialidades" element={<Especialidades />} />
+            <Route path="/carta" element={<Carta />}>
+              <Route path="licores" element={<Licores />} />
+              <Route path="comidas" element={<Comidas />} />
+            </Route>
+            {/* <Route path="/carta/:tipo" element={<Carta />} /> */}
+            <Route path="*" element={<h1>Not Found 404</h1>} />
+          </Routes>
+        </AuthProvider>
       </Router>
     </>
   );
