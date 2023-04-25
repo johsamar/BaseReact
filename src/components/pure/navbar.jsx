@@ -1,17 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
     <header>
       <nav
-        className="navbar bg-dark navbar-expand-lg bg-body-tertiary"
+        className="navbar navbar-expand-lg bg-body-tertiary"
         data-bs-theme="dark"
       >
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link to={"/home"} className="navbar-brand">
             REST-aurante Code
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -26,25 +27,25 @@ const NavBar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="#">
-                  Popular
-                </a>
+                <Link to={"/populares"} className="nav-link">
+                  Populares
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link to={"/especialidades"} className="nav-link">
                   Especialidades
-                </a>
+                </Link>
               </li>
               <li className="nav-item dropdown active">
-                <a
+                <Link
+                  to={"/carta"}
                   className="nav-link active dropdown-toggle"
-                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   Carta
-                </a>
+                </Link>
                 <ul className="dropdown-menu">
                   <li>
                     <a className="dropdown-item" href="#">
@@ -70,6 +71,16 @@ const NavBar = () => {
                     </a>
                   </li>
                 </ul>
+              </li>
+              <li className="nav-item">
+                <Link to={"/login"} className="nav-link">
+                  Iniciar Sesión
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={"/register"} className="nav-link">
+                  Registrarse
+                </Link>
               </li>
             </ul>
             <form className="d-flex" role="search">

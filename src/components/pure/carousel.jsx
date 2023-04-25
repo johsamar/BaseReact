@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getProductos } from "../services/productos";
+import { getProductos } from "../../services/productos";
+import ImageComponent from "./image";
 
 const Carousel = () => {
   const [data, setData] = useState([]);
@@ -20,16 +21,12 @@ const Carousel = () => {
       <div>
         <h2>Promociones</h2>
       </div>
-      <div id="carouselExample" class="carousel slide w-50 h-50">
-        <div class="carousel-inner">
+      <div id="carouselExample" className="carousel slide w-50 h-50">
+        <div className="carousel-inner">
           {data.map((producto) => {
             return (
-              <div class={slide}>
-                <img
-                  src={producto.imagen}
-                  className="d-block img-fluid"
-                  alt="..."
-                />
+              <div className={slide} key={producto.id}>
+                <ImageComponent src={producto.imagen} alt={producto.titulo} />
                 <div className="carousel-caption d-none d-md-block">
                   <h5>{producto.titulo}</h5>
                   <p>{producto.descripcion}</p>
@@ -49,7 +46,7 @@ const Carousel = () => {
             className="carousel-control-prev-icon"
             aria-hidden="true"
           ></span>
-          <span class="visually-hidden">Previous</span>
+          <span className="visually-hidden">Previous</span>
         </button>
         <button
           className="carousel-control-next"

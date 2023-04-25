@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 
-const Footer = () => {
+const FooterComponent = () => {
   return (
     <footer className="bg-dark text-light">
       <div className="d-flex p-5 flex-column justify-content-evenly">
@@ -49,8 +49,8 @@ const Footer = () => {
           <article>
             <h3>Contactanos</h3>
             <p>
-              <i className="bi bi-house-door-fill"></i> Manizales, Caldas, 170003,
-              CO. <br />
+              <i className="bi bi-house-door-fill"></i> Manizales, Caldas,
+              170003, CO. <br />
               <i className="bi bi-envelope-fill"></i> info@example.com <br />
               <i className="bi bi-telephone-fill"></i> + 01 234 567 88
             </p>
@@ -61,4 +61,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default FooterComponent;
