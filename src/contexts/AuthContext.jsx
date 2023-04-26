@@ -1,20 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import { getUsuario, removeUsuario, setUsuario } from "../services/storageService";
 
 const AuthContext = React.createContext();
 
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
-  const [usuario, setUsuario] = useState(null);
-
+  // const [usuario, setUsuario] = useState(null);
+  const usuario = getUsuario();
   const login = (usuario) => {
     setUsuario(usuario);
     navigate("/");
   };
 
   const logout = () => {
-    setUsuario(null);
+    removeUsuario();
     navigate("/login");
   };
 
@@ -24,11 +25,11 @@ const AuthProvider = ({ children }) => {
     logout,
   };
 
-  useEffect(() => {
-    console.log(usuario);
-    console.log("efecto");
-    console.log(auth.usuario);
-  }, [usuario]);
+  // useEffect(() => {
+  //   console.log(usuario);
+  //   console.log("efecto");
+  //   console.log(auth.usuario);
+  // }, [usuario]);
 
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 };
