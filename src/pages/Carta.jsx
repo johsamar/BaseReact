@@ -6,7 +6,7 @@ const Carta = () => {
   // const { tipo } = useParams();
   return (
     <>
-      <div class="container-fluid">
+      <div className="container-fluid">
         <h1>Carta</h1>
 
         {/* {tipo && <h3>Tipo: {tipo}</h3>} */}

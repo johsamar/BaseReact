@@ -1,12 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import React from "react";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
+// Importamos el local storage
+import {
+  getUsuario,
+  setUsuario,
+  removeUsuario,
+} from "../services/storageService";
 
 const AuthContext = React.createContext();
 
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
-  const [usuario, setUsuario] = useState(null);
+  const usuario = getUsuario();
 
   const login = (usuario) => {
     setUsuario(usuario);
@@ -14,7 +20,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    setUsuario(null);
+    removeUsuario();
     navigate("/login");
   };
 
@@ -23,12 +29,6 @@ const AuthProvider = ({ children }) => {
     login,
     logout,
   };
-
-  useEffect(() => {
-    console.log(usuario);
-    console.log("efecto");
-    console.log(auth.usuario);
-  }, [usuario]);
 
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 };
@@ -43,14 +43,13 @@ const ProtectedRoute = ({ children }) => {
 
   if (!auth.usuario) return <Navigate to="/login" />;
 
-  return children;
+  return <Outlet />;
 };
 
-const AuthLogin = ({ children }) => {
-  const auth = useAuth();
-  console.log(auth.usuario);
-  if (auth.usuario) return <Navigate to="/" />;
+// const AuthLogin = ({ children }) => {
+//   const auth = useAuth();
+//   if (auth.usuario) return <Navigate to="/" />;
 
-  return children;
-};
-export { AuthProvider, ProtectedRoute, AuthLogin, useAuth };
+//   return children;
+// };
+export { AuthProvider, ProtectedRoute, useAuth };

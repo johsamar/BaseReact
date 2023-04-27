@@ -2,6 +2,7 @@ import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { findPlatilloById } from "../../services/Platillos";
 import { PedidosContext } from "../../contexts/PedidosContext";
+import { MdDelete } from "react-icons/md";
 
 const VerPedidoComponent = () => {
   return (
@@ -37,7 +38,13 @@ const VerPedidoComponent = () => {
             </div>
             <div className="modal-body">
               <PedidosContext.Consumer>
-                {({ pedidos, total }) => {
+                {({ pedidos, setPedidos, total }) => {
+                  const eliminarProductoPedido = (pedido) => {
+                    const index = pedidos.indexOf(pedido);
+                    const tempPedidos = [...pedidos];
+                    tempPedidos.splice(index, 1);
+                    setPedidos(tempPedidos);
+                  };
                   return (
                     <>
                       <div className="row">
@@ -49,6 +56,7 @@ const VerPedidoComponent = () => {
                                 <th scope="col">Cantidad</th>
                                 <th scope="col">Valor</th>
                                 <th scope="col">Total</th>
+                                <th scope="col">Acciones</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -57,12 +65,20 @@ const VerPedidoComponent = () => {
                                   pedido.platillo
                                 );
                                 return (
-                                  <tr>
+                                  <tr key={pedido.platillo}>
                                     <td>{platilloFind.nombre}</td>
                                     <td>{pedido.cantidad}</td>
                                     <td>{platilloFind.precio}</td>
                                     <td>
                                       {platilloFind.precio * pedido.cantidad}
+                                    </td>
+                                    <td>
+                                      <MdDelete
+                                        onClick={() =>
+                                          eliminarProductoPedido(pedido)
+                                        }
+                                        className="action-pedido"
+                                      />
                                     </td>
                                   </tr>
                                 );
