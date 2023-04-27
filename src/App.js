@@ -8,7 +8,7 @@ import { Especialidades } from "./pages/Especialidades";
 import { Licores } from "./components/carta_components/Licores";
 import { Comidas } from "./components/carta_components/Comidas";
 import { LoginComponent } from "./components/LoginComponent";
-import { AuthLogin, AuthProvider, ProtectedRoute } from "./contexts/AuthContext";
+import { AuthProvider, ProtectedRoute } from "./contexts/AuthContext";
 
 // import { HomeForm } from "./pages/HomeForm";
 
@@ -19,20 +19,11 @@ function App() {
         <AuthProvider>
           <NavBar />
           <Routes>
-            <Route path="/" element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
-            } />
-            <Route path="/login" element={
-              <AuthLogin>
-                <LoginComponent />
-              </AuthLogin>} />
-            <Route path="/homeform"
-              element={
-                <ProtectedRoute>
-                  <HomeForm />
-                </ProtectedRoute>} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/homeform" element={<HomeForm />} />
+            </Route>
+            <Route index path="/login" element={<LoginComponent />} />
             <Route path="/populares" element={<Populares />} />
             <Route path="/especialidades" element={<Especialidades />} />
             <Route path="/carta" element={<Carta />}>

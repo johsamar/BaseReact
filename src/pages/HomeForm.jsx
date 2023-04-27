@@ -4,7 +4,7 @@ import { PlatilloFormComponent } from "../components/PlatilloFormComponent";
 const HomeForm = () => {
   return (
     <>
-      <div class="container-fluid">
+      <div className="container-fluid">
         <PlatilloFormComponent />
       </div>
     </>

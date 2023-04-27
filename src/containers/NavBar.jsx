@@ -13,6 +13,10 @@ const NavBar = () => {
     auth.logout();
   };
 
+  const login = () => {
+    auth.login();
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">

@@ -18,7 +18,7 @@ const Populares = () => {
 
   return (
     <>
-      <div class="container-fluid">
+      <div className="container-fluid">
         <h1>Populares</h1>
         <div className="row">
           {character &&
