@@ -38,7 +38,7 @@ const CantidadComponent = ({ id, nombre, valor }) => {
   };
 
   const reset = () => {
-    // setCantidad(1);
+    setCantidad(0);
     // setTotal(valor);
     handleValores();
   };
@@ -46,7 +46,7 @@ const CantidadComponent = ({ id, nombre, valor }) => {
   const aceptar = (id) => {
     if (cantidad > 0) {
       const copyPedidos = [...pedidos];
-      
+
       if (yaAgregado) {
         const index = copyPedidos.findIndex((pedido) => pedido.platillo === id);
         copyPedidos[index].cantidad = cantidad;

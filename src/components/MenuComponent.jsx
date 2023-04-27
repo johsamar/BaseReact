@@ -20,13 +20,13 @@ const MenuComponent = () => {
             <VerPedidoComponent />
           </div>
         </div>
-        <div class="row">
+        <div className="row">
           {!data ? (
             <h1>Cargando...</h1>
           ) : (
             data.map((platillo) => {
               return (
-                <div className="col-3 mt-3">
+                <div className="col-3 mt-3" key={platillo.id}>
                   <CardMenuComponent platillo={platillo} />
                 </div>
               );
