@@ -11,9 +11,9 @@ const LoginComponent = () => {
     formState: { errors },
   } = useForm();
 
-  const enviarDatos = (data) => {
-    console.log(data);
-    auth.login(data);
+  const enviarDatos = ({user, password}) => {
+    console.log("desde el componente", user);
+    auth.login(user, password);
   };
 
   return (
@@ -27,6 +27,10 @@ const LoginComponent = () => {
           <div className="col-4">
             <br />
             <h1>INICIAR SESION</h1>
+            {!auth.authError ? null : 
+              <div class="invalid-feedback">
+                credenciales erroneas, intentelo de nuevo
+              </div>}
             <br />
             <form className="container" onSubmit={handleSubmit(enviarDatos)}>
               <div className="row mt-2">
@@ -38,7 +42,7 @@ const LoginComponent = () => {
                       className="form-control"
                       id="nombre"
                       placeholder="Nombre del equipo"
-                      {...register("nombreUsuario", {
+                      {...register("user", {
                         required: true,
                         maxLength: 20,
                         minLength: 4,
@@ -61,7 +65,7 @@ const LoginComponent = () => {
                       className="form-control"
                       id="contrasena"
                       placeholder="Contraseña"
-                      {...register("contrasena", {
+                      {...register("password", {
                         required: true,
                         maxLength: 20,
                         minLength: 4,

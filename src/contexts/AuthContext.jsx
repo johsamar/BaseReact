@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from "react";
+import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { getUsuario, removeUsuario, setUsuario } from "../services/storageService";
+import { checkAuthentication } from "../services/AuthService";
 
 const AuthContext = React.createContext();
 
@@ -9,9 +10,18 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   // const [usuario, setUsuario] = useState(null);
   const usuario = getUsuario();
-  const login = (usuario) => {
-    setUsuario(usuario);
-    navigate("/");
+  const [authError, setAuthError] = useState(false);
+
+  const login = ({user, password}) => {
+    const authenticatedUser = checkAuthentication(user, password);
+    if (authenticatedUser) {
+      setUsuario(authenticatedUser);
+      navigate("/");
+    }else{
+      setAuthError(true)
+    }
+    //setUsuario(usuario);
+    //navigate("/");
   };
 
   const logout = () => {
@@ -23,6 +33,7 @@ const AuthProvider = ({ children }) => {
     usuario,
     login,
     logout,
+    authError
   };
 
   // useEffect(() => {
@@ -50,7 +61,7 @@ const ProtectedRoute = ({ children }) => {
 const AuthLogin = ({ children }) => {
   const auth = useAuth();
   console.log(auth.usuario);
-  if (auth.usuario) return <Navigate to="/" />;
+  if (!auth.authError) return <Navigate to="/" />;
 
   return children;
 };
