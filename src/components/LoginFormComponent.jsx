@@ -1,10 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import "./LoginFormComponent.css";
-import 'react-notifications/lib/notifications.css';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { useAuth } from "../contexts/AuthContext";
+import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import "react-notifications/lib/notifications.css";
+import "../styles/LoginFormComponent.css";
 
 export function LoginFormComponent({ login }) {
+  const auth = useAuth();
   const {
     register,
     handleSubmit,
@@ -12,41 +17,55 @@ export function LoginFormComponent({ login }) {
     reset,
   } = useForm();
   const urlAuthApi = "http://localhost:8080/login";
-  
+
   const authLogin = async (data) => {
     try {
       const response = await fetch(urlAuthApi, {
-        mode: "cors", 
+        mode: "cors",
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           usuario: data.email,
-          contrasenia: data.password
-        })
+          contrasenia: data.password,
+        }),
       });
       const jsonData = await response.json();
 
       console.log(jsonData); //! to delete
 
-      if(jsonData.isSuccessful){
-        NotificationManager.success('Inicio de sesión exitoso!', 'Sesión Iniciada');
+      if (jsonData.isSuccessful) {
+        NotificationManager.success(
+          "Inicio de sesión exitoso!",
+          "Sesión Iniciada"
+        );
+        auth.login(data);
       } else {
-        NotificationManager.error('Verifique el correo y la contraseña ingresados', 'Error al iniciar sesión');
+        NotificationManager.error(
+          "Verifique el correo y la contraseña ingresados",
+          "Error al iniciar sesión"
+        );
       }
-
     } catch (error) {
-      NotificationManager.error('Verifique el correo y la contraseña ingresados', 'Error al iniciar sesión');
+      NotificationManager.error(
+        "Verifique el correo y la contraseña ingresados",
+        "Error al iniciar sesión"
+      );
     }
 
     reset();
-  }
+  };
+
+  const enviarDatos = (data) => {
+    console.log(data);
+    authLogin(data);
+  };
 
   return (
     <div className="form-container">
       <h1>INICIAR SESION</h1>
-      <form onSubmit={handleSubmit(authLogin)}>
+      <form onSubmit={handleSubmit(enviarDatos)}>
         <label htmlFor="email" className="form-label">
           Correo
         </label>
@@ -97,8 +116,7 @@ export function LoginFormComponent({ login }) {
           Acceder
         </button>
       </form>
-      <NotificationContainer/>
+      <NotificationContainer />
     </div>
-    
   );
 }

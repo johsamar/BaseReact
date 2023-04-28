@@ -1,7 +1,7 @@
 import React from "react";
 import {LoginFormComponent} from "../components/LoginFormComponent";
 
-const LoginForm = () => {
+const LoginFormPage = () => {
   return (
     <>
       <div className="container-fluid">
@@ -11,4 +11,4 @@ const LoginForm = () => {
   );
 };
 
-export { LoginForm };
+export { LoginFormPage };

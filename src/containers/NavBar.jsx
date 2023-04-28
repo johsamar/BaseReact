@@ -4,6 +4,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import "../styles/NavBar.css"
 
 const NavBar = () => {
   const auth = useAuth();

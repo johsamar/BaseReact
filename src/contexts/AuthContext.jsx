@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
 
   const login = (usuario) => {
     setUsuario(usuario);
-    navigate("/");
+    navigate("/populares");
   };
 
   const logout = () => {

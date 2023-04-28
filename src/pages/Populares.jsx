@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { getCharacter } from "../services/rickmortyService";
+import {response} from "../services/pokeApiService";
 import { HandlerGET } from "../handlers/handlerService";
 
 const Populares = () => {
